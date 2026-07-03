@@ -151,6 +151,20 @@
   }
 }
 
+/* Sur mobile, la section carte Visa affiche l'image en premier dans le DOM (pour
+   garder image à gauche / texte à droite en desktop) — ce qui la fait suivre
+   directement l'image de la section précédente une fois empilée. On inverse donc
+   l'ordre visuel uniquement en dessous de 900px, sans toucher au DOM ni au desktop. */
+@media (max-width: 899px) {
+  .landing-card-section .landing-mobile-image {
+    order: 2;
+  }
+
+  .landing-card-section .landing-mobile-copy {
+    order: 1;
+  }
+}
+
 .landing-mobile-copy {
   display: flex;
   align-items: center;
