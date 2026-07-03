@@ -1,0 +1,403 @@
+/* Styles spécifiques par écran — un bloc par écran, à compléter au fur et à mesure */
+
+/* ===== Landing (index.html) ===== */
+
+.landing-hero {
+  background: var(--color-secondary);
+  color: var(--color-bg);
+  padding-bottom: var(--space-8);
+}
+
+.header-cta {
+  background: transparent;
+  border: 1.5px solid rgba(252, 250, 254, 0.4);
+  color: var(--color-bg);
+  font-weight: 600;
+  font-size: 14px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.header-cta:hover {
+  background: var(--color-bg);
+  color: var(--color-secondary);
+  border-color: var(--color-bg);
+}
+
+@media (max-width: 380px) {
+  .header-cta {
+    font-size: 12px;
+    padding: var(--space-2) var(--space-3);
+    gap: var(--space-1);
+  }
+}
+
+/* Même forme que .header-cta (padding, radius, poids, disposition), mais couleurs
+   inversées pour rester visible sur fond clair (hors du hero sombre). */
+.header-cta--on-light {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.header-cta--on-light:hover {
+  background: var(--color-secondary);
+  color: var(--color-bg);
+  border-color: var(--color-secondary);
+}
+
+/* Badges App Store / Google Play — fond clair pour bien ressortir sur le hero sombre,
+   couleurs de marque (Prune) plutôt que le noir habituel de ces badges. */
+.store-badges {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-bg);
+  color: var(--color-secondary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  min-height: 48px;
+}
+
+.store-badge svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.store-badge span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.store-badge small {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.store-badge strong {
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+/* Grille du hero : une colonne sur mobile (texte puis calculateur empilés),
+   deux colonnes à partir de 900px pour occuper réellement la largeur disponible
+   plutôt que de laisser le texte isolé dans une petite colonne centrée. */
+.landing-hero-grid {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .landing-hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    padding-top: var(--space-8);
+  }
+}
+
+.landing-hero-copy h1 {
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.2;
+  max-width: 32ch;
+}
+
+.landing-hero-subtitle {
+  color: var(--color-tertiary);
+  font-size: clamp(16px, 1.5vw, 19px);
+  margin-top: var(--space-3);
+  line-height: 1.5;
+  max-width: 46ch;
+}
+
+.landing-hero-calculator {
+  width: 100%;
+}
+
+.landing-section-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Section "portefeuille mobile" : texte et image se partagent chacun une moitié pleine
+   de la section (aucune des deux n'est réduite/centrée dans son côté). */
+.landing-mobile-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: stretch;
+  padding: 0;
+}
+
+@media (min-width: 900px) {
+  .landing-mobile-section {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+}
+
+.landing-mobile-copy {
+  display: flex;
+  align-items: center;
+  padding: var(--space-8) var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .landing-mobile-copy {
+    padding: var(--space-8);
+  }
+}
+
+.landing-mobile-text {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  max-width: 36ch;
+}
+
+.text-accent-secondary {
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+/* Section carte Visa — titre imposant + sous-texte + CTA, carte présentée entière
+   sur un fond doux avec ombre plutôt qu'en fond perdu (inspiré d'une référence Nubank). */
+.landing-card-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+  max-width: 36ch;
+}
+
+.landing-card-title + .landing-card-title {
+  margin-top: var(--space-4);
+}
+
+h2.landing-card-title {
+  color: var(--color-primary);
+}
+
+/* Sélecteurs à deux classes pour l'emporter sur .landing-mobile-image / .landing-mobile-image
+   img (règles partagées plus bas dans le fichier, même spécificité sinon). */
+.landing-mobile-image.landing-card-visual {
+  background: var(--color-surface-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+}
+
+.landing-mobile-image.landing-card-visual img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 85%;
+  object-fit: contain;
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 48px rgba(36, 27, 46, 0.22);
+}
+
+/* Opérateurs Mobile Money pris en charge — logos officiels, légèrement arrondis. */
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 480px) {
+  .payment-methods {
+    gap: var(--space-8);
+  }
+}
+
+.payment-logo-wrap {
+  display: inline-flex;
+  padding: var(--space-2);
+}
+
+@media (min-width: 480px) {
+  .payment-logo-wrap {
+    padding: var(--space-4);
+  }
+}
+
+.payment-logo {
+  height: 44px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.landing-mobile-image {
+  height: 320px;
+}
+
+@media (min-width: 900px) {
+  .landing-mobile-image {
+    height: 460px;
+  }
+}
+
+/* Sur très grand écran, la section (pleine largeur) s'étire bien au-delà de
+   1200px : on augmente la hauteur pour que l'image ne devienne pas une
+   bande trop fine et trop recadrée. */
+@media (min-width: 1600px) {
+  .landing-mobile-image {
+    height: 560px;
+  }
+}
+
+.landing-mobile-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.landing-footer {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.landing-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.landing-footer-links a {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.landing-footer-social {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.landing-footer-social a {
+  color: var(--color-text-secondary);
+  display: flex;
+  transition: color 0.15s ease;
+}
+
+.landing-footer-social a:hover {
+  color: var(--color-primary);
+}
+
+.landing-footer-social svg {
+  width: 20px;
+  height: 20px;
+}
+
+.landing-footer-bottom {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.landing-footer-mark {
+  flex-shrink: 0;
+}
+
+.landing-footer-copyright {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  margin-top: 0;
+}
+
+/* ===== Auth (auth.html) ===== */
+
+.auth-body {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-6);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-title {
+  font-size: clamp(24px, 3vw, 30px);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  margin-top: var(--space-2);
+  line-height: 1.5;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form {
+  margin-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-error {
+  color: var(--color-error);
+  font-size: 13px;
+  margin-top: var(--space-3);
+}
+
+.auth-toggle {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.auth-toggle a {
+  color: var(--color-primary);
+  font-weight: 600;
+  margin-left: var(--space-1);
+}
+
+/* ===== Envoyer de l'argent (send-money.html) ===== */
+
+.send-money-body {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-6);
+  flex: 1;
+}
+
+.send-money-title {
+  font-size: clamp(24px, 3vw, 30px);
+}
+
+.send-money-subtitle {
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  margin-top: var(--space-2);
+  line-height: 1.5;
+}

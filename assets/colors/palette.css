@@ -1,0 +1,19 @@
+:root {
+  /* Senou Pay — palette de marque (board v1.0, 2026) */
+  --senou-color-violet: #C06CE8;
+  --senou-color-prune: #241B2E;
+  --senou-color-lavande: #C9A9D4;
+  --senou-color-lilas: #E7D8F1;
+  --senou-color-blanc-casse: #FCFAFE;
+  --senou-color-ardoise: #6C6478;
+
+  /* Couleurs sémantiques (fonctionnelles, pas des couleurs de marque) */
+  --senou-color-success: #2E9E5B;
+  --senou-color-success-bg: #F1FBF4;
+  --senou-color-error: #C4485C;
+  --senou-color-error-bg: #FDF1F3;
+
+  /* Typographie */
+  --senou-font-display: 'Space Grotesk', sans-serif;
+  --senou-font-body: 'Hanken Grotesk', sans-serif;
+}

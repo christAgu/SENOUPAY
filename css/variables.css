@@ -1,0 +1,42 @@
+/* Senou Pay — design tokens (board de marque v1.0, 2026) */
+:root {
+  /* Couleurs de marque */
+  --color-primary: #C06CE8;      /* Violet Senou — accent, CTA principal */
+  --color-secondary: #241B2E;    /* Prune — fonds sombres, structure */
+  --color-tertiary: #C9A9D4;     /* Lavande — bordures, éléments secondaires */
+  --color-surface-soft: #E7D8F1; /* Lilas — fonds de section */
+
+  /* Neutres */
+  --color-bg: #FCFAFE;           /* Blanc cassé — fond général */
+  --color-text-primary: #241B2E; /* Prune — texte principal sur fond clair */
+  --color-text-secondary: #6C6478; /* Ardoise — texte secondaire, labels */
+  --color-border: #E7D8F1;       /* Lilas — séparateurs, bordures légères */
+
+  /* Sémantiques */
+  --color-success: #2E9E5B;
+  --color-success-bg: #F1FBF4;
+  --color-error: #C4485C;
+  --color-error-bg: #FDF1F3;
+  --color-warning: #B8791E;
+  --color-warning-bg: #FBF0DF;
+  --color-info: #3E7CB1;
+  --color-info-bg: #EAF2FE;
+
+  /* Typographie */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif; /* titres, montants */
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;   /* texte courant */
+
+  /* Échelle d'espacement */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Rayons (cohérents avec le board : pilules + cartes arrondies) */
+  --radius-pill: 999px;
+  --radius-card: 24px;
+  --radius-icon: 16px;
+  --radius-sm: 8px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senou Pay — Se connecter</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+  <div class="app-frame">
+
+    <div id="app-header"></div>
+    <script>
+      window.SENOU_HEADER_OPTIONS = { showBack: true };
+    </script>
+
+    <div class="page-container auth-body">
+      <h1 id="auth-title" class="auth-title">Créer un compte</h1>
+      <p class="auth-subtitle">Envoyez de l'argent du Bénin vers l'Europe en quelques minutes.</p>
+
+      <div class="auth-form">
+        <label class="field-label" for="auth-identifier">Téléphone ou email</label>
+        <input id="auth-identifier" class="input-field" type="text" placeholder="ex. 90 00 00 00 ou vous@email.com" autocomplete="username">
+
+        <label class="field-label" for="auth-password" style="margin-top: var(--space-4);">Mot de passe</label>
+        <input id="auth-password" class="input-field" type="password" placeholder="Votre mot de passe" autocomplete="current-password">
+
+        <p id="auth-error" class="auth-error" hidden>Merci de renseigner votre identifiant et votre mot de passe.</p>
+
+        <button id="auth-continue-btn" class="btn-primary btn-block" style="margin-top: var(--space-6);">Continuer</button>
+      </div>
+
+      <p class="auth-toggle">
+        <span id="auth-toggle-text">Déjà un compte ?</span>
+        <a href="#" id="auth-toggle-link">Se connecter</a>
+      </p>
+    </div>
+
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/pricing.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/screens/auth.js"></script>
+</body>
+</html>

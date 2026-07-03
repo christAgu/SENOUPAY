@@ -1,0 +1,298 @@
+/* Composants réutilisables Senou Pay — aucune couleur/taille en dur ici, tout référence variables.css */
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  font-weight: 600;
+  font-size: 15px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  min-height: 44px;
+  border: 1.5px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Les CTA utilisent parfois un <a> plutôt qu'un <button> — garantit le même rendu inline */
+a.btn-primary {
+  display: inline-block;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: var(--color-bg);
+  font-weight: 600;
+  font-size: 15px;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  min-height: 44px;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--color-tertiary);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  font-size: 15px;
+  padding: calc(var(--space-3) - 1.5px) calc(var(--space-6) - 1.5px);
+  border-radius: var(--radius-pill);
+  min-height: 44px;
+}
+
+.input-field {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.header-bar {
+  background: var(--color-secondary);
+  color: var(--color-bg);
+}
+
+/* Contenu du header, centré et limité en largeur comme le reste des pages */
+.header-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .header-bar-inner {
+    padding: var(--space-4) var(--space-8);
+  }
+}
+
+/* Sur très petits écrans (téléphones ≤ 360px), logo + nom + CTA peuvent
+   dépasser la largeur disponible : on resserre padding/gap/police plutôt
+   que de laisser le header déborder ou passer à la ligne. */
+@media (max-width: 380px) {
+  .header-bar-inner {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
+/* Rendu par js/components/header.js sur toutes les pages */
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  white-space: nowrap;
+}
+
+@media (max-width: 380px) {
+  .brand-name {
+    font-size: 15px;
+  }
+
+  .brand-mark {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@keyframes brand-mark-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.brand-mark {
+  animation: brand-mark-spin 6s linear infinite;
+}
+
+.header-back {
+  color: var(--color-bg);
+  font-size: 18px;
+  line-height: 1;
+  width: 20px;
+}
+
+.header-spacer {
+  width: 20px;
+}
+
+.card {
+  background: var(--color-bg);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  box-shadow: 0 4px 16px rgba(36, 27, 46, 0.06);
+}
+
+/* Variante utilisée pour les cartes de formulaire (conversion, montant...) — largeur confortable
+   pour la lecture, cohérente quel que soit l'écran qui l'utilise. */
+.card--narrow {
+  max-width: 480px;
+}
+
+/* Calculateur de conversion XOF -> EUR : deux blocs bien distincts dans la même carte
+   ("Vous envoyez" en XOF, "Le bénéficiaire reçoit" en EUR) — réutilisé sur plusieurs
+   écrans (landing, envoyer de l'argent). */
+.amount-panel {
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-3);
+  padding: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.amount-panel--result {
+  background: var(--color-surface-soft);
+  border-color: transparent;
+}
+
+/* Enveloppe des deux blocs + bouton de bascule. Au clic, amount-swap.js réordonne réellement
+   les blocs dans le DOM (le bloc actif passe en premier) — AutoAnimate (chargé depuis le CDN)
+   anime ce changement de position tout seul, donc l'ordre visuel suit simplement l'ordre DOM. */
+.amount-panels {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Variante utilisée quand la carte n'a pas de titre au-dessus (ex. send-money.html) :
+   le bloc affiché en premier ne doit pas avoir de marge, quel que soit celui qui y est. */
+.amount-panels--flush .amount-panel:first-child {
+  margin-top: 0;
+}
+
+/* Bouton de bascule, centré sur la jointure entre les deux blocs */
+.amount-swap-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: calc(var(--space-3) * -1);
+  margin-bottom: calc(var(--space-3) * -1);
+  position: relative;
+  z-index: 1;
+}
+
+.amount-swap-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  border: 3px solid var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.amount-swap-btn img {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.2s ease;
+}
+
+.amount-swap-btn--flipped img {
+  transform: rotate(180deg);
+}
+
+/* Ligne du haut du bloc : label à gauche, drapeau à droite, alignés ensemble
+   (plutôt que le drapeau aligné avec le montant en dessous, qui laissait un
+   grand vide dans le coin supérieur droit du bloc). */
+.amount-panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.amount-panel .field-label {
+  margin-bottom: 0;
+}
+
+.amount-input {
+  border: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  width: 100%;
+  padding: 0;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.amount-input:focus {
+  outline: none;
+}
+
+/* Masque les flèches haut/bas natives des <input type="number"> — pas utiles ici. */
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amount-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.amount-flag {
+  flex-shrink: 0;
+  display: block;
+}
+
+.conversion-preview {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.rate-caption {
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  margin-top: var(--space-3);
+  padding-left: 48px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+.badge-success { background: var(--color-success-bg); color: var(--color-success); }
+.badge-error { background: var(--color-error-bg); color: var(--color-error); }
+.badge-warning { background: var(--color-warning-bg); color: var(--color-warning); }
+.badge-info { background: var(--color-info-bg); color: var(--color-info); }

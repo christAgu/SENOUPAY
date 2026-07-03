@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senou Pay — Envoyez de l'argent du Bénin vers l'Europe</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+  <div class="app-frame">
+
+    <!-- 1. Header + Hero (bloc sombre) -->
+    <div class="landing-hero">
+      <div id="app-header"></div>
+      <script>
+        window.SENOU_HEADER_OPTIONS = { ctaHtml: '<a href="auth.html" class="header-cta"><img src="assets/icons/icon-user.svg" alt="" width="16" height="16">Se connecter</a>' };
+      </script>
+
+      <div class="page-container landing-hero-grid">
+        <div class="landing-hero-copy">
+          <h1>Envoyez et recevez de l'argent en Europe instantanément depuis le Bénin en un seul clic.</h1>
+          <p class="landing-hero-subtitle">Payer, envoyer, suivre son argent — Senou Pay s'occupe du taux, vous gardez le contrôle.</p>
+          <div class="store-badges" style="margin-top: var(--space-6);">
+            <a href="#" class="store-badge" aria-label="Télécharger sur l'App Store">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.207-2.98.79-.9 2.14-1.58 3.14-1.62.03.13.06.28.06.37zm3.51 15.61c-.11.28-.24.55-.37.8-.48.94-1.06 1.87-1.9 1.88-.82.02-1.09-.5-2.02-.5-.94 0-1.24.49-2.02.52-.85.03-1.5-.99-1.98-1.93-1.05-2.02-1.85-5.7-.77-8.18.53-1.22 1.49-2 2.52-2.02.83-.02 1.6.55 2.1.55.5 0 1.45-.68 2.44-.58.41.02 1.58.17 2.33 1.26-.06.04-1.39.82-1.38 2.42.02 1.92 1.68 2.56 1.7 2.57-.02.05-.27.9-.65 1.71z"/></svg>
+              <span><small>Télécharger sur</small><strong>App Store</strong></span>
+            </a>
+            <a href="#" class="store-badge" aria-label="Disponible sur Google Play">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <span><small>Disponible sur</small><strong>Google Play</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="card card--narrow landing-hero-calculator">
+          <h2 class="landing-section-title">Combien voulez-vous envoyer ?</h2>
+
+          <div class="amount-panels">
+            <div class="amount-panel">
+              <div class="amount-panel-top">
+                <span class="field-label">Vous envoyez</span>
+                <img src="assets/icons/flag-benin.svg" alt="Bénin" width="18" height="18" class="amount-flag">
+              </div>
+              <input id="landing-amount-xof" class="amount-input" type="number" min="0" inputmode="numeric" placeholder="0">
+            </div>
+
+            <div class="amount-swap-wrap">
+              <button type="button" id="landing-swap-btn" class="amount-swap-btn" aria-label="Inverser les champs">
+                <img src="assets/icons/icon-swap.svg" alt="">
+              </button>
+            </div>
+
+            <div class="amount-panel amount-panel--result">
+              <div class="amount-panel-top">
+                <span class="field-label">Le bénéficiaire reçoit</span>
+                <img src="assets/icons/flag-france.svg" alt="France" width="18" height="18" class="amount-flag">
+              </div>
+              <input id="landing-amount-eur" class="amount-input conversion-preview" type="number" min="0" inputmode="decimal" placeholder="0" readonly>
+            </div>
+          </div>
+
+          <p class="rate-caption">Taux fixe : 1 € = 655.957 XOF</p>
+          <button id="landing-send-btn" class="header-cta header-cta--on-light btn-block" style="margin-top: var(--space-4); justify-content: center;">Envoyer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Portefeuille mobile (section pleine largeur, pas de page-container : l'image
+         doit couvrir toute la moitié droite jusqu'au bord de l'écran) -->
+    <div class="landing-mobile-section">
+      <div class="landing-mobile-copy">
+        <div>
+          <p class="landing-mobile-text">Envoyez directement de l'argent vers l'Europe depuis votre portefeuille mobile de manière sécurisée.</p>
+          <div class="payment-methods">
+            <span class="payment-logo-wrap"><img src="assets/images/mtn-momo.jpeg" alt="MTN MoMo" class="payment-logo"></span>
+            <span class="payment-logo-wrap"><img src="assets/images/moov-money.png" alt="Moov Money" class="payment-logo"></span>
+            <span class="payment-logo-wrap"><img src="assets/images/celtiis-cash.jpeg" alt="Celtiis Cash" class="payment-logo"></span>
+          </div>
+        </div>
+      </div>
+      <div class="landing-mobile-image">
+        <img src="assets/images/mobile-wallet.jpg" alt="Femme souriante utilisant Senou Pay depuis son téléphone">
+      </div>
+    </div>
+
+    <!-- 3. Carte Visa (inspiré de la référence Nubank : titre imposant + sous-texte + CTA
+         à droite, carte présentée entière sur un fond doux plutôt qu'en fond perdu) -->
+    <div class="landing-mobile-section">
+      <div class="landing-mobile-image landing-card-visual">
+        <img src="assets/images/visa-card.png" alt="Carte Visa Senou Pay, édition Prune">
+      </div>
+      <div class="landing-mobile-copy">
+        <div>
+          <h2 class="landing-card-title">La carte qu'il vous faut.</h2>
+          <p class="landing-card-title">Devenez <span class="text-accent-secondary">sans limites</span> avec une carte Visa pour dépenser au Bénin et à l'étranger, avec un RIB européen dédié.</p>
+          <a href="#" class="header-cta header-cta--on-light" style="margin-top: var(--space-6);">Découvrir la carte Visa</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Footer -->
+    <footer class="landing-footer">
+      <div class="page-container">
+        <div class="landing-footer-links">
+          <a href="#">À propos</a>
+          <a href="#">Contact</a>
+          <a href="#">Conditions d'utilisation</a>
+          <a href="#">Politique de confidentialité</a>
+        </div>
+
+        <div class="landing-footer-social">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-1.5c-.83 0-1.5.67-1.5 1.5V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8 0-5.52-4.48-10-10-10z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 3H22l-7.4 8.5L23 21h-6.7l-5.2-6.5L5 21H2l7.9-9L1.5 3h6.9l4.7 5.9L18.9 3zm-1.2 16h1.9L7.4 5H5.4l12.3 14z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.8 8.001s-.2-1.4-.8-2.03c-.77-.8-1.63-.81-2.03-.86C16.1 5 12 5 12 5h-.01s-4.1 0-6.97.11c-.4.05-1.26.06-2.03.86-.6.63-.8 2.03-.8 2.03S2 9.64 2 11.28v1.44c0 1.64.2 3.28.2 3.28s.2 1.4.8 2.03c.77.8 1.78.78 2.23.86C6.8 18.98 12 19 12 19s4.1-.01 6.97-.12c.4-.05 1.26-.06 2.03-.86.6-.63.8-2.03.8-2.03s.2-1.64.2-3.28v-1.44c0-1.64-.2-3.27-.2-3.27zM9.98 14.5v-5l4.7 2.5-4.7 2.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8.34 18.34H5.67V9.75h2.67v8.59zM7 8.6a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1zM18.34 18.34h-2.67v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38v4.57H9.77V9.75h2.56v1.17h.04c.36-.68 1.23-1.4 2.54-1.4 2.72 0 3.22 1.79 3.22 4.11v4.71z"/></svg></a>
+        </div>
+
+        <div class="landing-footer-bottom">
+          <img src="assets/logo/senou-pay-mark.svg" alt="" width="24" height="24" class="landing-footer-mark">
+          <p class="landing-footer-copyright">© 2026 Senou Pay. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/pricing.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/components/amount-swap.js"></script>
+  <script src="js/screens/landing.js"></script>
+</body>
+</html>

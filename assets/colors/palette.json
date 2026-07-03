@@ -1,0 +1,25 @@
+{
+  "name": "Senou Pay",
+  "boardVersion": "1.0",
+  "boardYear": 2026,
+  "colors": {
+    "violetSenou": "#C06CE8",
+    "prune": "#241B2E",
+    "lavande": "#C9A9D4",
+    "lilas": "#E7D8F1",
+    "blancCasse": "#FCFAFE",
+    "ardoise": "#6C6478",
+    "success": "#2E9E5B",
+    "successBg": "#F1FBF4",
+    "error": "#C4485C",
+    "errorBg": "#FDF1F3"
+  },
+  "typography": {
+    "display": "Space Grotesk",
+    "displayUsage": "Titres & montants",
+    "body": "Hanken Grotesk",
+    "bodyUsage": "Texte courant",
+    "bodyWeights": ["Regular", "Medium", "Bold", "Extrabold"]
+  },
+  "tagline": "Payer, envoyer, suivre son argent — en toute simplicité."
+}
