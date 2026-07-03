@@ -165,6 +165,25 @@
   }
 }
 
+/* Sur mobile, la section carte Visa passe entièrement au-dessus de la section
+   portefeuille (photo de la fille), qui se retrouve donc tout en bas. `.app-frame`
+   est déjà en colonne flex, donc `order` s'applique directement à ces sections.
+   Le footer garde un `order` explicite plus élevé pour ne pas se retrouver
+   coincé entre le hero (order par défaut 0) et ces deux sections. */
+@media (max-width: 899px) {
+  .landing-card-section {
+    order: 1;
+  }
+
+  .landing-wallet-section {
+    order: 2;
+  }
+
+  .landing-footer {
+    order: 3;
+  }
+}
+
 .landing-mobile-copy {
   display: flex;
   align-items: center;
