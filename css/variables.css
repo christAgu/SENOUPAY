@@ -1,20 +1,16 @@
-/* Senou Pay — design tokens (board de marque v1.0, 2026) + couche UI moderne */
+/* Senou Pay — design tokens (board de marque v1.0, 2026) */
 :root {
   /* Couleurs de marque */
-  --color-primary: #C06CE8;      /* Violet Senou — accent, liens actifs */
-  --color-secondary: #241B2E;    /* Prune — CTA principal (style fintech sombre) */
+  --color-primary: #C06CE8;      /* Violet Senou — accent, CTA principal */
+  --color-secondary: #241B2E;    /* Prune — fonds sombres, structure */
   --color-tertiary: #C9A9D4;     /* Lavande — bordures, éléments secondaires */
   --color-surface-soft: #E7D8F1; /* Lilas — fonds de section */
 
   /* Neutres */
-  --color-bg: #FFFFFF;           /* Blanc pur — fond Robinhood-like */
-  --color-surface: #FFFFFF;
-  --color-surface-muted: #F7F5FA; /* Champs, zones secondaires */
-  --color-surface-elevated: #FFFFFF;
-  --color-text-primary: #241B2E;
-  --color-text-secondary: #6C6478;
-  --color-border: #EBE6F0;
-  --color-border-subtle: #F0ECF4;
+  --color-bg: #FCFAFE;           /* Blanc cassé — fond général */
+  --color-text-primary: #241B2E; /* Prune — texte principal sur fond clair */
+  --color-text-secondary: #6C6478; /* Ardoise — texte secondaire, labels */
+  --color-border: #E7D8F1;       /* Lilas — séparateurs, bordures légères */
 
   /* Sémantiques */
   --color-success: #2E9E5B;
@@ -27,50 +23,20 @@
   --color-info-bg: #EAF2FE;
 
   /* Typographie */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  --text-xs: 12px;
-  --text-sm: 13px;
-  --text-base: 15px;
-  --text-lg: 18px;
-  --text-xl: 22px;
-  --text-2xl: 28px;
-  --text-3xl: 34px;
-
-  --letter-spacing-tight: -0.025em;
-  --letter-spacing-normal: 0;
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif; /* titres, montants */
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;   /* texte courant */
 
   /* Échelle d'espacement */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
-  --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
 
-  /* Rayons */
+  /* Rayons (cohérents avec le board : pilules + cartes arrondies) */
   --radius-pill: 999px;
-  --radius-card: 16px;
-  --radius-input: 12px;
-  --radius-icon: 12px;
+  --radius-card: 24px;
+  --radius-icon: 16px;
   --radius-sm: 8px;
-
-  /* Ombres (définies ici — pas de hex/rgba ailleurs) */
-  --shadow-sm: 0 1px 2px rgba(36, 27, 46, 0.04);
-  --shadow-md: 0 4px 20px rgba(36, 27, 46, 0.06);
-  --shadow-lg: 0 12px 40px rgba(36, 27, 46, 0.08);
-
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.2s ease;
-
-  /* Surfaces spéciales */
-  --color-header-bg: rgba(255, 255, 255, 0.92);
-  --color-focus-ring: rgba(192, 108, 232, 0.15);
-  --color-card-gradient-end: color-mix(in srgb, var(--color-secondary) 85%, var(--color-primary));
-  --color-on-dark-border: rgba(252, 250, 254, 0.15);
 }

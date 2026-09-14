@@ -1,5 +1,5 @@
 /* Polices de marque (Google Fonts) — un seul point de chargement pour tout le prototype */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800&display=swap');
 
 * {
   box-sizing: border-box;
@@ -7,47 +7,50 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html, body {
   height: 100%;
 }
 
 body {
-  background: var(--color-surface-muted);
+  background: var(--color-surface-soft);
   font-family: var(--font-body);
-  font-size: var(--text-base);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: var(--letter-spacing-tight);
-  line-height: 1.15;
+  font-weight: 600;
 }
 
-/* Simulateur mobile centré — fond contrasté autour (effet device) */
+/* Conteneur racine — pleine largeur, layout web responsive (plus un simulateur de téléphone) */
 .app-frame {
-  max-width: 420px;
-  margin: 0 auto;
+  width: 100%;
   min-height: 100vh;
   background: var(--color-bg);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-lg);
 }
 
-.screen-body {
-  padding: var(--space-6) var(--space-5);
-  flex: 1;
+/* Colonne de contenu centrée, utilisée dans tous les écrans pour éviter le texte/formulaires
+   étirés bord à bord sur grand écran, tout en restant pleine largeur sur mobile. */
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
 }
 
+@media (min-width: 768px) {
+  .page-container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+/* Filet de sécurité : aucune image ne doit pouvoir provoquer un débordement
+   horizontal, quel que soit l'écran. */
 img, svg {
   max-width: 100%;
 }
@@ -61,12 +64,4 @@ button {
   font-family: var(--font-body);
   cursor: pointer;
   border: none;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
