@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senou Pay — Envoi confirmé</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+  <div class="app-frame">
+
+    <div id="app-header"></div>
+    <script>
+      window.SENOU_HEADER_OPTIONS = {};
+    </script>
+
+    <main class="screen-body confirmation-body">
+      <div class="success-icon-wrap">
+        <img src="assets/icons/icon-check.svg" alt="">
+      </div>
+      <h1 class="confirmation-title">Envoi confirmé</h1>
+
+      <div id="confirmation-recap" class="card confirmation-recap"></div>
+
+      <div class="confirmation-status">
+        <span class="badge badge-warning">En cours de traitement</span>
+      </div>
+      <p class="confirmation-message">Nous vous notifierons dès que le transfert sera finalisé.</p>
+
+      <a href="home.html" class="btn-primary btn-block" style="margin-top: var(--space-6);">Retour à l'accueil</a>
+    </main>
+
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/screens/confirmation.js"></script>
+</body>
+</html>

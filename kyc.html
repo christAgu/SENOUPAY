@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senou Pay — Vérification d'identité</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+  <div class="app-frame">
+
+    <div id="app-header"></div>
+    <script>
+      window.SENOU_HEADER_OPTIONS = { showBack: true };
+    </script>
+
+    <main class="screen-body kyc-body">
+      <h1 class="kyc-title">Vérification d'identité</h1>
+      <p class="kyc-text">Pour protéger votre compte et respecter la réglementation, nous devons vérifier votre identité. Cette étape ne prend que quelques minutes.</p>
+      <p class="kyc-text">Préparez une pièce d'identité valide (CNI ou passeport) et un selfie dans un endroit bien éclairé.</p>
+
+      <button id="kyc-start-btn" class="btn-primary btn-block" style="margin-top: var(--space-8);">Commencer la vérification</button>
+    </main>
+
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/screens/kyc.js"></script>
+</body>
+</html>

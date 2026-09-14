@@ -1,393 +1,160 @@
-/* Styles spécifiques par écran — un bloc par écran, à compléter au fur et à mesure */
+/* Styles spécifiques par écran — UI moderne fintech */
 
 /* ===== Landing (index.html) ===== */
 
 .landing-hero {
-  background: var(--color-secondary);
-  color: var(--color-bg);
-  padding-bottom: var(--space-8);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-6);
 }
 
-.header-cta {
-  background: transparent;
-  border: 1.5px solid rgba(252, 250, 254, 0.4);
-  color: var(--color-bg);
-  font-weight: 600;
-  font-size: 14px;
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.header-cta:hover {
-  background: var(--color-bg);
-  color: var(--color-secondary);
-  border-color: var(--color-bg);
-}
-
-@media (max-width: 380px) {
-  .header-cta {
-    font-size: 12px;
-    padding: var(--space-2) var(--space-3);
-    gap: var(--space-1);
-  }
-}
-
-/* Même forme que .header-cta (padding, radius, poids, disposition), mais couleurs
-   inversées pour rester visible sur fond clair (hors du hero sombre). */
-.header-cta--on-light {
-  border-color: var(--color-secondary);
-  color: var(--color-secondary);
-}
-
-.header-cta--on-light:hover {
-  background: var(--color-secondary);
-  color: var(--color-bg);
-  border-color: var(--color-secondary);
-}
-
-/* Badges App Store / Google Play — fond clair pour bien ressortir sur le hero sombre,
-   couleurs de marque (Prune) plutôt que le noir habituel de ces badges. */
-.store-badges {
-  display: flex;
-  gap: var(--space-3);
-  flex-wrap: wrap;
-}
-
-.store-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  background: var(--color-bg);
-  color: var(--color-secondary);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-sm);
-  min-height: 48px;
-}
-
-.store-badge svg {
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.store-badge span {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.store-badge small {
-  font-size: 10px;
-  font-weight: 400;
-  color: var(--color-text-secondary);
-}
-
-.store-badge strong {
-  font-size: 15px;
-  font-weight: 600;
-  font-family: var(--font-display);
-}
-
-/* Grille du hero : une colonne sur mobile (texte puis calculateur empilés),
-   deux colonnes à partir de 900px pour occuper réellement la largeur disponible
-   plutôt que de laisser le texte isolé dans une petite colonne centrée. */
-.landing-hero-grid {
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-8);
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
-  align-items: center;
-}
-
-@media (min-width: 900px) {
-  .landing-hero-grid {
-    grid-template-columns: 1.15fr 0.85fr;
-    padding-top: var(--space-8);
-  }
-}
-
-.landing-hero-copy h1 {
-  font-size: clamp(22px, 3vw, 34px);
-  line-height: 1.2;
-  max-width: 32ch;
+.landing-hero-title {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1.1;
 }
 
 .landing-hero-subtitle {
-  color: var(--color-tertiary);
-  font-size: clamp(16px, 1.5vw, 19px);
-  margin-top: var(--space-3);
-  line-height: 1.5;
-  max-width: 46ch;
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-top: var(--space-4);
+  line-height: 1.6;
+  max-width: 36ch;
 }
 
-.landing-hero-calculator {
-  width: 100%;
+.landing-conversion {
+  padding-top: 0;
+  padding-bottom: var(--space-6);
+}
+
+.landing-conversion .card {
+  padding: var(--space-6);
+}
+
+.landing-conversion .card-title,
+.card-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.landing-transactions {
+  padding-top: 0;
+  padding-bottom: var(--space-6);
 }
 
 .landing-section-title {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-/* Section "portefeuille mobile" : texte et image se partagent chacun une moitié pleine
-   de la section (aucune des deux n'est réduite/centrée dans son côté). */
-.landing-mobile-section {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
-  align-items: stretch;
-  padding: 0;
-}
-
-@media (min-width: 900px) {
-  .landing-mobile-section {
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-  }
-}
-
-/* Sur mobile, la section carte Visa affiche l'image en premier dans le DOM (pour
-   garder image à gauche / texte à droite en desktop) — ce qui la fait suivre
-   directement l'image de la section précédente une fois empilée. On inverse donc
-   l'ordre visuel uniquement en dessous de 900px, sans toucher au DOM ni au desktop. */
-@media (max-width: 899px) {
-  .landing-card-section .landing-mobile-image {
-    order: 2;
-  }
-
-  .landing-card-section .landing-mobile-copy {
-    order: 1;
-  }
-}
-
-.landing-mobile-copy {
-  display: flex;
-  align-items: center;
-  padding: var(--space-8) var(--space-6);
-}
-
-@media (min-width: 768px) {
-  .landing-mobile-copy {
-    padding: var(--space-8);
-  }
-}
-
-.landing-mobile-text {
-  font-family: var(--font-display);
-  font-size: clamp(24px, 3vw, 34px);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--color-text-primary);
-  max-width: 36ch;
-}
-
-.text-accent-secondary {
-  color: var(--color-secondary);
+  font-size: var(--text-lg);
   font-weight: 700;
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
-/* Section carte Visa — titre imposant + sous-texte + CTA, carte présentée entière
-   sur un fond doux avec ombre plutôt qu'en fond perdu (inspiré d'une référence Nubank). */
-.landing-card-title {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 2.8vw, 32px);
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--color-text-primary);
-  max-width: 36ch;
-}
-
-.landing-card-title + .landing-card-title {
-  margin-top: var(--space-4);
-}
-
-h2.landing-card-title {
-  color: var(--color-primary);
-}
-
-/* Sélecteurs à deux classes pour l'emporter sur .landing-mobile-image / .landing-mobile-image
-   img (règles partagées plus bas dans le fichier, même spécificité sinon). */
-.landing-mobile-image.landing-card-visual {
-  background: var(--color-surface-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-8);
-}
-
-.landing-mobile-image.landing-card-visual img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 85%;
-  object-fit: contain;
+.transaction-card {
+  margin-top: var(--space-2);
+  padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-card);
-  box-shadow: 0 24px 48px rgba(36, 27, 46, 0.22);
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-bg);
+  box-shadow: none;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
 }
 
-/* Opérateurs Mobile Money pris en charge — logos officiels, légèrement arrondis. */
-.payment-methods {
+.transaction-card:first-child {
+  margin-top: 0;
+}
+
+.transaction-card:hover {
+  background: var(--color-surface-muted);
+  border-color: var(--color-border);
+  box-shadow: none;
+}
+
+.transaction-amount {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.transaction-meta {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-@media (min-width: 480px) {
-  .payment-methods {
-    gap: var(--space-8);
-  }
-}
-
-.payment-logo-wrap {
-  display: inline-flex;
-  padding: var(--space-2);
-}
-
-@media (min-width: 480px) {
-  .payment-logo-wrap {
-    padding: var(--space-4);
-  }
-}
-
-.payment-logo {
-  height: 44px;
-  width: auto;
-  border-radius: var(--radius-sm);
-  object-fit: contain;
-}
-
-.landing-mobile-image {
-  height: 320px;
-}
-
-@media (min-width: 900px) {
-  .landing-mobile-image {
-    height: 460px;
-  }
-}
-
-/* Sur très grand écran, la section (pleine largeur) s'étire bien au-delà de
-   1200px : on augmente la hauteur pour que l'image ne devienne pas une
-   bande trop fine et trop recadrée. */
-@media (min-width: 1600px) {
-  .landing-mobile-image {
-    height: 560px;
-  }
-}
-
-.landing-mobile-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  justify-content: space-between;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
 }
 
 .landing-footer {
   padding-top: var(--space-6);
-  padding-bottom: var(--space-6);
-  border-top: 1px solid var(--color-border);
+  padding-bottom: var(--space-8);
+  border-top: 1px solid var(--color-border-subtle);
+  margin-top: auto;
+  background: var(--color-surface-muted);
 }
 
 .landing-footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: var(--space-4) var(--space-6);
 }
 
 .landing-footer-links a {
   color: var(--color-text-secondary);
-  font-size: 13px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color var(--transition-fast);
 }
 
-.landing-footer-social {
-  display: flex;
-  gap: var(--space-4);
-  margin-top: var(--space-4);
-}
-
-.landing-footer-social a {
-  color: var(--color-text-secondary);
-  display: flex;
-  transition: color 0.15s ease;
-}
-
-.landing-footer-social a:hover {
-  color: var(--color-primary);
-}
-
-.landing-footer-social svg {
-  width: 20px;
-  height: 20px;
-}
-
-.landing-footer-bottom {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-top: var(--space-4);
-}
-
-.landing-footer-mark {
-  flex-shrink: 0;
+.landing-footer-links a:hover {
+  color: var(--color-text-primary);
 }
 
 .landing-footer-copyright {
   color: var(--color-text-secondary);
-  font-size: 12px;
-  margin-top: 0;
+  font-size: var(--text-xs);
+  margin-top: var(--space-6);
 }
 
 /* ===== Auth (auth.html) ===== */
 
 .auth-body {
   padding-top: var(--space-8);
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-8);
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .auth-title {
-  font-size: clamp(24px, 3vw, 30px);
-  width: 100%;
-  max-width: 400px;
+  font-size: var(--text-2xl);
+  font-weight: 700;
 }
 
 .auth-subtitle {
   color: var(--color-text-secondary);
-  font-size: 15px;
-  margin-top: var(--space-2);
-  line-height: 1.5;
-  width: 100%;
-  max-width: 400px;
+  font-size: var(--text-base);
+  margin-top: var(--space-3);
+  line-height: 1.6;
 }
 
 .auth-form {
   margin-top: var(--space-8);
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  gap: var(--space-1);
 }
 
 .auth-error {
   color: var(--color-error);
-  font-size: 13px;
+  font-size: var(--text-sm);
   margin-top: var(--space-3);
 }
 
 .auth-toggle {
   text-align: center;
-  margin-top: var(--space-6);
-  font-size: 14px;
+  margin-top: var(--space-8);
+  font-size: var(--text-base);
   color: var(--color-text-secondary);
 }
 
@@ -397,21 +164,247 @@ h2.landing-card-title {
   margin-left: var(--space-1);
 }
 
+.auth-toggle a:hover {
+  text-decoration: underline;
+}
+
+/* ===== OTP (otp.html) ===== */
+
+.otp-body {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  flex: 1;
+}
+
+.otp-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+.otp-subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-top: var(--space-3);
+  line-height: 1.6;
+}
+
+.otp-form {
+  margin-top: var(--space-8);
+}
+
+.otp-form .input-field {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-align: center;
+  padding: var(--space-5);
+}
+
+.otp-resend {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--text-base);
+}
+
+.otp-resend a {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.otp-resend a:hover {
+  text-decoration: underline;
+}
+
+/* ===== KYC (kyc.html) ===== */
+
+.kyc-body {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  flex: 1;
+}
+
+.kyc-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+}
+
+.kyc-text {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-top: var(--space-4);
+  line-height: 1.65;
+}
+
+/* ===== Home (home.html) ===== */
+
+.home-body {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
+  flex: 1;
+}
+
+.home-welcome {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  font-weight: 500;
+}
+
+.home-body .card {
+  background: linear-gradient(145deg, var(--color-secondary) 0%, var(--color-card-gradient-end) 100%);
+  color: var(--color-bg);
+  border: none;
+  box-shadow: var(--shadow-md);
+}
+
+.home-body .card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.home-balance-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+
+.home-balance-value {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: var(--space-2);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.home-viban {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-on-dark-border);
+}
+
+.home-viban-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+}
+
+.home-viban-value {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin-top: var(--space-2);
+  letter-spacing: 0.04em;
+}
+
+.home-viban-note {
+  font-size: var(--text-xs);
+  opacity: 0.65;
+  margin-top: var(--space-3);
+  line-height: 1.5;
+}
+
 /* ===== Envoyer de l'argent (send-money.html) ===== */
 
 .send-money-body {
   padding-top: var(--space-8);
-  padding-bottom: var(--space-6);
+  padding-bottom: var(--space-8);
   flex: 1;
 }
 
 .send-money-title {
-  font-size: clamp(24px, 3vw, 30px);
+  font-size: var(--text-2xl);
+  font-weight: 700;
 }
 
 .send-money-subtitle {
   color: var(--color-text-secondary);
-  font-size: 15px;
-  margin-top: var(--space-2);
-  line-height: 1.5;
+  font-size: var(--text-base);
+  margin-top: var(--space-3);
+  line-height: 1.6;
+}
+
+.send-money-form {
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--color-surface-muted);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.send-money-form .input-field {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+/* ===== Bénéficiaire (beneficiary.html) ===== */
+
+.beneficiary-body {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-8);
+  flex: 1;
+}
+
+.beneficiary-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-top: var(--space-6);
+}
+
+.beneficiary-form {
+  margin-top: var(--space-6);
+}
+
+.beneficiary-form .field-label {
+  margin-top: var(--space-5);
+}
+
+.beneficiary-form .field-label:first-child {
+  margin-top: 0;
+}
+
+.mobile-money-field {
+  margin-top: var(--space-4);
+}
+
+.mobile-money-field[hidden] {
+  display: none;
+}
+
+/* ===== Confirmation (confirmation.html) ===== */
+
+.confirmation-body {
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-8);
+  flex: 1;
+  text-align: center;
+}
+
+.confirmation-title {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.confirmation-status {
+  margin-top: var(--space-6);
+}
+
+.confirmation-message {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-top: var(--space-4);
+  line-height: 1.6;
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.confirmation-recap {
+  margin-top: var(--space-8);
+  text-align: left;
 }

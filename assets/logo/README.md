@@ -8,10 +8,14 @@ Assets extraits du board officiel "Identité de marque — Senou Pay" (v1.0, 202
 - `senou-pay-logo-dark.svg` — wordmark horizontal pour fond sombre (fond prune `#241B2E`, texte blanc cassé, glyphe violet). Correspond à la déclinaison sombre du board.
 - `senou-pay-logotype-principal.svg` — lockup hero complet (glyphe + "Senou Pay" empilé + baseline "Payer, envoyer, suivre son argent — en toute simplicité."), reproduisant le panneau principal du board.
 
+**Exports PNG** (même noms, extension `.png`) : rasterisations des SVG ci-dessus, ajoutées pour prévisualisation et usage hors navigateur (stores, favicon, docs). Voir [`assets/README.md`](../README.md).
+
 Autres tokens de marque extraits du même board, rangés à côté de `assets/logo/` :
+- [`assets/README.md`](../README.md) — inventaire complet (icons, images, colors).
 - [`assets/colors/palette.css`](../colors/palette.css) et [`assets/colors/palette.json`](../colors/palette.json) — couleurs et polices en variables/JSON directement consommables dans le code.
 - [`assets/icons/`](../icons/) — les 5 icônes de la section "Iconographie & UI" du board (carte, envoi, validation, statistiques, utilisateur), trait 2px violet, bouts arrondis.
+- [`assets/images/`](../images/) — photos lifestyle et logos opérateurs Mobile Money (MTN, Moov, Celtiis) + rendu carte Visa.
 
 Le board de marque complet (palette, typographie, ton de voix, boutons, iconographie) reste consultable dans le projet Claude Design d'origine : [Identité Senou Pay](https://claude.ai/design/p/9ffc329c-4465-4c3b-9e3a-f1ec198901c6?file=Identite+Senou+Pay.dc.html).
 
-À faire quand des exports de production seront nécessaires : générer les PNG/tailles d'app icon (App Store, Play Store, favicon) à partir de `senou-pay-app-icon.svg`.
+À faire quand des exports de production seront nécessaires : régénérer les PNG/tailles d'app icon (App Store, Play Store, favicon) à partir de `senou-pay-app-icon.svg` si la charte évolue — des exports PNG de base sont déjà présents dans ce dossier.

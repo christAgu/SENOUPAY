@@ -42,7 +42,7 @@ function setupContinue() {
     }
     errorEl.hidden = true;
 
-    setState('senoupay_user', { identifier });
+    setState('user', { identifier });
     window.location.href = 'otp.html';
   });
 }

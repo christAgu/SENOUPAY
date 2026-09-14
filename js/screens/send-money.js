@@ -1,15 +1,18 @@
-// Écran Envoyer de l'argent (send-money.html) — accessible sans authentification,
-// pour permettre à un visiteur de tester la fonctionnalité d'envoi de bout en bout.
-// Le header et le calculateur (avec bascule XOF/EUR) sont gérés par js/components/header.js
-// et js/components/amount-swap.js (partagés entre écrans).
+// Écran Envoyer de l'argent (send-money.html) — accessible sans authentification.
 
-function prefillAmountFromLanding(updateFromXof) {
-  const prefill = getState('senoupay_prefill_amount_xof');
+function updateEurPreview() {
+  const input = document.getElementById('send-money-amount-xof');
+  const preview = document.getElementById('send-money-amount-eur');
+  const amountXof = parseFloat(input.value) || 0;
+  preview.textContent = formatEur(convertXofToEur(amountXof));
+}
+
+function prefillAmountFromLanding() {
+  const prefill = getState('prefill_amount_xof');
   if (prefill) {
     document.getElementById('send-money-amount-xof').value = prefill;
-    updateFromXof();
-    // On efface la clé pour ne pas la réappliquer sur une visite ultérieure.
-    setState('senoupay_prefill_amount_xof', null);
+    updateEurPreview();
+    setState('prefill_amount_xof', null);
   }
 }
 
@@ -19,7 +22,7 @@ function setupContinueButton() {
     const amountXof = parseFloat(input.value) || 0;
     if (amountXof <= 0) return;
 
-    setState('senoupay_transfer_amount_xof', {
+    setState('transfer_amount_xof', {
       amountXof,
       amountEur: convertXofToEur(amountXof),
     });
@@ -28,7 +31,7 @@ function setupContinueButton() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const { updateFromXof } = bindAmountSwap('send-money-amount-xof', 'send-money-amount-eur', 'send-money-swap-btn');
-  prefillAmountFromLanding(updateFromXof);
+  document.getElementById('send-money-amount-xof').addEventListener('input', updateEurPreview);
+  prefillAmountFromLanding();
   setupContinueButton();
 });

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Senou Pay — Accueil</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+  <div class="app-frame">
+
+    <div id="app-header"></div>
+    <script>
+      window.SENOU_HEADER_OPTIONS = {};
+    </script>
+
+    <main class="screen-body home-body">
+      <p id="home-welcome" class="home-welcome">Bonjour</p>
+
+      <div class="card">
+        <p class="home-balance-label">Solde disponible</p>
+        <p class="home-balance-value">0,00 €</p>
+
+        <div class="home-viban">
+          <p class="home-viban-label">vIBAN</p>
+          <p class="home-viban-value">FR76 •••• •••• •••• •••• •••• •••</p>
+          <p class="home-viban-note">Sera fourni par OpenPayd une fois le backend connecté.</p>
+        </div>
+      </div>
+
+      <button id="home-send-btn" class="btn-primary btn-block" style="margin-top: var(--space-6);">Envoyer de l'argent</button>
+    </main>
+
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/components/header.js"></script>
+  <script src="js/screens/home.js"></script>
+</body>
+</html>

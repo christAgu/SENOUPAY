@@ -22,30 +22,35 @@ exactement les mêmes conventions.
 
 ```
 V2/web/
-  index.html            écran Landing
+  index.html            écran Landing (5 sections spec FRONTEND_V2)
   auth.html              écran Connexion / Inscription
+  otp.html               écran Vérification SMS
+  kyc.html               écran Vérification d'identité
+  home.html              écran Dashboard
   send-money.html        écran Envoyer de l'argent (accessible sans compte)
+  beneficiary.html       écran Bénéficiaire + Mobile Money
+  confirmation.html      écran Confirmation d'envoi
   css/
     variables.css         tokens de marque (couleurs, typo, espacements, rayons)
-    base.css               reset + layout racine (.app-frame, .page-container)
+    base.css               reset + layout racine (.app-frame 420px, .screen-body)
     components.css         composants génériques réutilisables sur plusieurs écrans
     screens.css             styles propres à un écran donné, un bloc par écran
   js/
     state.js                localStorage (get/set/clear), préfixe senoupay_
-    pricing.js               conversion XOF <-> EUR (taux fixe + spread)
+    pricing.js               conversion XOF -> EUR (taux fixe + spread)
     format.js                formatage d'affichage (formatXof, formatEur)
     components/
       header.js               rendu du header partagé (logo + nav + CTA)
-      amount-swap.js           calculateur bidirectionnel XOF/EUR + AutoAnimate
     screens/
-      landing.js, auth.js, send-money.js   logique propre à chaque écran
+      landing.js, auth.js, otp.js, kyc.js, home.js,
+      send-money.js, beneficiary.js, confirmation.js
   assets/
     colors/     palette exportée (JSON + CSS) depuis le board de marque
     logo/        déclinaisons du logo (mark, wordmark, icône d'app, clair/sombre)
-    icons/        pictos SVG maison (drapeaux, swap, user...) — recréés à la main
-                   quand aucun fichier source n'était fourni
-    images/      photos/logos fournis par l'utilisateur (voir §7)
+    icons/        pictos SVG maison (drapeaux, check, user...)
 ```
+
+**Layout** : simulateur mobile 420px (`.app-frame { max-width: 420px; margin: 0 auto; }`), conforme à FRONTEND_V2.md.
 
 **Règle de rangement CSS** : une classe qui sert sur ≥ 2 écrans va dans
 `components.css` (nom générique, ex. `.card`, `.field-label`,
@@ -83,9 +88,13 @@ Fonts (pas de balise `<link>` dupliquée par page).
 
 ## 3. Étapes suivies pour construire la page (dans l'ordre réel)
 
+> **Mise à jour (FRONTEND_V2 complet)** : retour au simulateur mobile 420px
+> (`.app-frame`), landing simplifiée en 5 sections spec, calculateur XOF→EUR
+> unidirectionnel (sans `amount-swap.js`), 8 écrans complets (auth → otp →
+> kyc → home → send-money → beneficiary → confirmation).
+
 1. **Variables + reset** : `variables.css` puis `base.css` (`* { box-sizing:
-   border-box }`, `.app-frame` pleine largeur, `.page-container` centré
-   `max-width: 1200px` avec padding responsive).
+   border-box }`, `.app-frame` 420px centré, `.screen-body` avec padding).
 2. **Écran Landing** : header + hero, puis Auth, en suivant le plan
    `FRONTEND_V2.md`.
 3. **Passage d'un simulateur mobile figé à un layout web responsive** :
